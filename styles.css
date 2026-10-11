@@ -365,6 +365,7 @@ td code { white-space: nowrap; }
 }
 .footer-brand { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
 .footer-brand .brand-name { font-weight: 700; }
+.footer-brand .footer-org { color: var(--text); font-weight: 600; }
 .footer-brand p { margin: 4px 0 0; color: var(--text-dim); font-size: 13px; }
 .footer-cols { display: flex; gap: 64px; }
 .footer-cols h4 { margin: 0 0 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); }
