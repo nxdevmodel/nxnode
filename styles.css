@@ -107,6 +107,12 @@ code {
   font-weight: 800;
   font-size: 15px;
 }
+.brand-logo {
+  display: block;
+  height: 30px;
+  width: auto;
+}
+.footer-brand .brand-logo { height: 36px; }
 .nav {
   display: flex;
   gap: 22px;
