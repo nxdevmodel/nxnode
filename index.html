@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.title">NxNode — Satu Store, Semua Project Node.js</title>
+  <meta name="description" content="NxNode adalah package manager Node.js dengan Global Store bersama. Satu salinan express dipakai lintas semua project — hemat disk, hemat waktu install, tanpa mengubah cara kerja package.json." data-i18n-attr="content|meta.desc">
+  <meta name="keywords" content="package manager, node_modules, global store, junction, symlink, deduplikasi, npm registry">
+  <meta name="theme-color" content="#0b0f14">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">Nx</span>
+        <span class="brand-name">NxNode</span>
+      </a>
+      <nav class="nav">
+        <a href="#start" data-i18n="nav.start">Mulai</a>
+        <a href="#features" data-i18n="nav.features">Fitur</a>
+        <a href="#how" data-i18n="nav.how">Cara Kerja</a>
+        <a href="#commands" data-i18n="nav.commands">Perintah</a>
+        <a href="#integration" data-i18n="nav.integration">Integrasi</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-lang-btn="id" class="active">ID</button>
+          <button type="button" data-lang-btn="en">EN</button>
+        </div>
+        <a class="btn btn-primary btn-sm" href="#cta" data-i18n="nav.cta">Mulai Sekarang</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-inner">
+        <span class="badge">v0.1.0 · Node.js ≥ 18 · MIT · Windows-first</span>
+        <h1 data-i18n="hero.title">Satu Store untuk Semua Project Node.js Anda.</h1>
+        <p class="lead" data-i18n="hero.lead"></p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#start" data-i18n="hero.cta1">Mulai Sekarang</a>
+          <a class="btn btn-ghost" href="#how" data-i18n="hero.cta2">Lihat Cara Kerjanya</a>
+        </div>
+        <ul class="hero-points">
+          <li>
+            <strong data-i18n="hero.p1t">Hemat disk</strong>
+            <span data-i18n="hero.p1d"></span>
+          </li>
+          <li>
+            <strong data-i18n="hero.p2t">Hemat waktu</strong>
+            <span data-i18n="hero.p2d"></span>
+          </li>
+          <li>
+            <strong data-i18n="hero.p3t">Tetap kompatibel</strong>
+            <span data-i18n="hero.p3d"></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="start" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title" data-i18n="start.title">Mulai Cepat</h2>
+        <div class="grid-2">
+          <div>
+            <h3 data-i18n="start.s1t">1. Jalankan NxNode dari source</h3>
+            <p data-i18n="start.s1d"></p>
+            <pre class="term"><code><span class="prompt">$</span> cd D:\Framework\CLI\nxnode
+<span class="prompt">$</span> npm install
+<span class="prompt">$</span> node bin/nxnode.js --help</code></pre>
+            <p data-i18n="start.s1note"></p>
+            <pre class="term"><code><span class="prompt">$</span> npm link
+<span class="prompt">$</span> nxnode --version</code></pre>
+          </div>
+          <div>
+            <h3 data-i18n="start.s2t">2. Buat project &amp; pasang package</h3>
+            <p data-i18n="start.s2d"></p>
+            <pre class="term"><code><span class="prompt">$</span> nxnode project create my-project
+<span class="prompt">$</span> nxnode install express
+<span class="prompt">$</span> nxnode install lodash
+
+<span class="prompt">$</span> nxnode list</code></pre>
+            <p data-i18n="start.s2note"></p>
+            <pre class="term"><code><span class="prompt">$</span> nxnode install</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem" class="section">
+      <div class="container">
+        <div class="grid-2">
+          <div>
+            <h2 data-i18n="problem.title">Masalahnya</h2>
+            <p data-i18n="problem.desc"></p>
+            <pre class="tree"><code>Project A1            Project A2
+└── node_modules      └── node_modules
+    ├── express           ├── express   &lt;-- duplikat
+    ├── axios             ├── axios     &lt;-- duplikat
+    └── ws                └── sharp</code></pre>
+          </div>
+          <div>
+            <h2 data-i18n="solution.title">Solusi NxNode</h2>
+            <p data-i18n="solution.desc"></p>
+            <pre class="tree"><code>        Project A1 +-+
+        Project A2 +-+--&gt;  D:\NxNodeStore
+        Project A3 +-+     (satu salinan express@5.1.0)</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title" data-i18n="features.title">Fitur Utama</h2>
+        <div class="cards">
+          <article class="card">
+            <h3 data-i18n="feat.1.t">Global Package Store</h3>
+            <p data-i18n="feat.1.d"></p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="feat.2.t">Dedup lintas project</h3>
+            <p data-i18n="feat.2.d"></p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="feat.3.t">Multi-versi berdampingan</h3>
+            <p data-i18n="feat.3.d"></p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="feat.4.t">Transitive dependency</h3>
+            <p data-i18n="feat.4.d"></p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="feat.5.t">Integrity SHA-512</h3>
+            <p data-i18n="feat.5.d"></p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="feat.6.t">Lock file reproducible</h3>
+            <p data-i18n="feat.6.d"></p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="feat.7.t">Scoped package</h3>
+            <p data-i18n="feat.7.d"></p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="feat.8.t">Empat mode linking</h3>
+            <p data-i18n="feat.8.d"></p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="feat.9.t">Garbage collection aman</h3>
+            <p data-i18n="feat.9.d"></p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="feat.10.t">Bisa dipakai sebagai library</h3>
+            <p data-i18n="feat.10.d"></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="how.title">Cara Kerja</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-num">1</span>
+            <h3 data-i18n="how.s1t">Install</h3>
+            <p data-i18n="how.s1d"></p>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <h3 data-i18n="how.s2t">Store atau Link</h3>
+            <p data-i18n="how.s2d"></p>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <h3 data-i18n="how.s3t">Link</h3>
+            <p data-i18n="how.s3d"></p>
+          </li>
+        </ol>
+        <pre class="tree flow"><code>              nxnode install express
+                        |
+                        v
+                 Baca / Read package.json
+                        |
+                        v
+                 Resolve version
+                        |
+                        v
+              Cek / Check Global Package Store
+                   /          \
+                ADA/EXISTS   TIDAK/MISSING
+                  |              |
+                  v              v
+                Link          Download
+                                 |
+                                 v
+                          Verify + Store
+                                 |
+                                 v
+                               Link</code></pre>
+      </div>
+    </section>
+
+    <section id="demo" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title" data-i18n="demo.title">Demo Terminal</h2>
+        <div class="grid-2">
+          <div>
+            <h3 data-i18n="demo.a.title">Install pertama — belum ada di store</h3>
+            <pre class="term"><code><span class="prompt">$</span> nxnode install express
+
+[NxNode] Resolving express...
+[NxNode] Required version: 5.1.0
+[NxNode] Added express@^5.1.0 in package.json
+[NxNode] Building dependency tree...
+[NxNode] Found 57 packages
+
+[NxNode] Downloading express@5.1.0...
+[NxNode] Linking transitive dependencies inside store...
+[NxNode] Linking packages...
+
+<span class="ok">✓ express@5.1.0 installed with 57 packages</span></code></pre>
+          </div>
+          <div>
+            <h3 data-i18n="demo.b.title">Install kedua — sudah ada, tanpa download ulang</h3>
+            <pre class="term"><code><span class="prompt">$</span> nxnode install express
+
+[NxNode] Resolving express...
+[NxNode] Required version: 5.1.0
+[NxNode] express@5.1.0 found in store
+[NxNode] Linking existing package...
+
+<span class="ok">✓ express@5.1.0 linked</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="commands" class="section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="commands.title">Referensi Perintah</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th data-i18n="commands.col1">Perintah</th>
+                <th data-i18n="commands.col2">Fungsi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>nxnode install</code></td><td data-i18n="cmd.i1"></td></tr>
+              <tr><td><code>nxnode install &lt;package&gt;</code></td><td data-i18n="cmd.i2"></td></tr>
+              <tr><td><code>nxnode install &lt;package&gt;@&lt;version&gt;</code></td><td data-i18n="cmd.i3"></td></tr>
+              <tr><td><code>nxnode remove &lt;package&gt;</code></td><td data-i18n="cmd.i4"></td></tr>
+              <tr><td><code>nxnode update &lt;package&gt;</code></td><td data-i18n="cmd.i5"></td></tr>
+              <tr><td><code>nxnode link</code></td><td data-i18n="cmd.i6"></td></tr>
+              <tr><td><code>nxnode unlink</code></td><td data-i18n="cmd.i7"></td></tr>
+              <tr><td><code>nxnode list</code></td><td data-i18n="cmd.i8"></td></tr>
+              <tr><td><code>nxnode list --global</code></td><td data-i18n="cmd.i9"></td></tr>
+              <tr><td><code>nxnode store</code></td><td data-i18n="cmd.i10"></td></tr>
+              <tr><td><code>nxnode store path</code></td><td data-i18n="cmd.i11"></td></tr>
+              <tr><td><code>nxnode store clean</code></td><td data-i18n="cmd.i12"></td></tr>
+              <tr><td><code>nxnode store projects</code></td><td data-i18n="cmd.i13"></td></tr>
+              <tr><td><code>nxnode config</code></td><td data-i18n="cmd.i14"></td></tr>
+              <tr><td><code>nxnode config &lt;key&gt; &lt;value&gt;</code></td><td data-i18n="cmd.i15"></td></tr>
+              <tr><td><code>nxnode project create &lt;name&gt;</code></td><td data-i18n="cmd.i16"></td></tr>
+              <tr><td><code>nxnode doctor</code></td><td data-i18n="cmd.i17"></td></tr>
+              <tr><td><code>nxnode --version</code></td><td data-i18n="cmd.i18"></td></tr>
+              <tr><td><code>nxnode --help</code></td><td data-i18n="cmd.i19"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" data-i18n="commands.note"></p>
+      </div>
+    </section>
+
+    <section id="linking" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title" data-i18n="linking.title">Mode Linking</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Mode</th>
+                <th data-i18n="linking.col2">Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>junction</code></td><td data-i18n="link.d1"></td></tr>
+              <tr><td><code>symlink</code></td><td data-i18n="link.d2"></td></tr>
+              <tr><td><code>hardlink</code></td><td data-i18n="link.d3"></td></tr>
+              <tr><td><code>copy</code></td><td data-i18n="link.d4"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p data-i18n="linking.desc"></p>
+        <pre class="term"><code>express@^5.1.0   [linked (junction) -&gt; D:\NxNodeStore\packages\express\5.1.0\package]
+lodash@^4.17.0   [copied -&gt; D:\NxNodeStore\packages\lodash\4.17.0\package]</code></pre>
+      </div>
+    </section>
+
+    <section id="config" class="section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="config.title">Konfigurasi</h2>
+        <div class="grid-2">
+          <div>
+            <ul class="plain">
+              <li data-i18n="config.f1"></li>
+              <li data-i18n="config.f2"></li>
+            </ul>
+            <pre class="term"><code>nxnode config storePath E:\MyPackages
+nxnode config linkMode copy</code></pre>
+          </div>
+          <div>
+            <pre class="term"><code>{
+  "storePath": "D:\\NxNodeStore",
+  "linkMode": "junction"
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="integration" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title" data-i18n="integration.title">Integrasi (NxDOM)</h2>
+        <p data-i18n="integration.lead"></p>
+        <ul class="plain">
+          <li data-i18n="integration.web"></li>
+          <li data-i18n="integration.desktop"></li>
+          <li data-i18n="integration.mobile"></li>
+        </ul>
+        <h3 data-i18n="integration.libTitle">Dipakai sebagai library</h3>
+        <pre class="term"><code><span class="cmt">// Node CommonJS — panggil langsung tanpa spawn CLI</span>
+const nxnode = require('nxnode');
+
+await nxnode.install('express@^5.1.0', projectRoot, onProgress);
+await nxnode.installAll(projectRoot);          <span class="cmt">// semua dependency di package.json</span>
+console.log(nxnode.store.getStorePath());       <span class="cmt">// lokasi Global Store</span></code></pre>
+      </div>
+    </section>
+
+    <section id="compat" class="section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="compat.title">Kompatibilitas &amp; Catatan</h2>
+        <ul class="plain">
+          <li data-i18n="compat.l1"></li>
+          <li data-i18n="compat.l2"></li>
+          <li data-i18n="compat.l3"></li>
+          <li data-i18n="compat.l4"></li>
+          <li data-i18n="compat.l5"></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="faq" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq">
+          <details>
+            <summary data-i18n="faq.q1"></summary>
+            <p data-i18n="faq.a1"></p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q2"></summary>
+            <p data-i18n="faq.a2"></p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q3"></summary>
+            <p data-i18n="faq.a3"></p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q4"></summary>
+            <p data-i18n="faq.a4"></p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q5"></summary>
+            <p data-i18n="faq.a5"></p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q6"></summary>
+            <p data-i18n="faq.a6"></p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="section cta">
+      <div class="container">
+        <h2 data-i18n="cta.title">Berhenti menyimpan <code>node_modules</code> berkali-kali.</h2>
+        <p data-i18n="cta.desc"></p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#start" data-i18n="cta.btn1">Mulai Sekarang</a>
+          <a class="btn btn-ghost" href="#commands" data-i18n="cta.btn2">Baca Dokumentasi</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark">Nx</span>
+        <span class="brand-name">NxNode</span>
+        <p>v0.1.0 · MIT</p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4 data-i18n="foot.product">Produk</h4>
+          <a href="#features" data-i18n="nav.features">Fitur</a>
+          <a href="#how" data-i18n="nav.how">Cara Kerja</a>
+          <a href="#commands" data-i18n="nav.commands">Perintah</a>
+          <a href="#integration" data-i18n="nav.integration">Integrasi</a>
+        </div>
+        <div>
+          <h4 data-i18n="foot.source">Sumber</h4>
+          <a href="../README.md">README.md</a>
+          <a href="../GUIDE.md">GUIDE.md</a>
+          <a href="../CHANGELOG.md">CHANGELOG.md</a>
+          <a href="../Plan.md">Plan.md</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>
